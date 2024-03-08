@@ -1,4 +1,4 @@
-package com.plantie.app.plantie.Controllers;
+package com.plantie.app.plantie.controller;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
