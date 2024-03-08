@@ -58,5 +58,6 @@ jobs:
         with:
           app-name: 'Plantie'
           slot-name: 'Production'
-          package: '*.jar'
+          package: 'target/Plantie-0.0.1-SNAPSHOT.war'
+
           
