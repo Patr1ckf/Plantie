@@ -16,7 +16,7 @@ public class PlantService {
 
     public double getMoisture() {
         if (plant == null) {
-            throw new PlantNotFoundException("Plant not found");
+            throw new PlantNotFoundException("Plant not found!!!");
         }
         return plant.getMoisture();
     }
