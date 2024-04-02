@@ -1,14 +1,14 @@
 package com.plantie.app.plantie.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+//import javax.persistence.Entity;
+//import javax.persistence.GeneratedValue;
+//import javax.persistence.Id;
 import java.util.Objects;
 
 //@Entity
 public class Plant {
 
-    private @Id @GeneratedValue Long id;
+//    private @Id @GeneratedValue Long id;
     private double moisture;
 
     public Plant() {
@@ -27,13 +27,13 @@ public class Plant {
         this.moisture = moisture;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public Long getId() {
+//        return id;
+//    }
 
     @Override
     public String toString() {
@@ -42,16 +42,16 @@ public class Plant {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Plant plant = (Plant) o;
-        return Double.compare(moisture, plant.moisture) == 0 && Objects.equals(id, plant.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, moisture);
-    }
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Plant plant = (Plant) o;
+//        return Double.compare(moisture, plant.moisture) == 0 && Objects.equals(id, plant.id);
+//    }
+//
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, moisture);
+//    }
 }
