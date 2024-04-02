@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
-@Entity
+//@Entity
 public class Plant {
 
     private @Id @GeneratedValue Long id;
