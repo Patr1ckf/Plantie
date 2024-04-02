@@ -3,10 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>Page 1</title>
+    <style>
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 200px;
+            height: 5px;
+            background: linear-gradient(to right, #f00 0%, #f00 20%, #ff0 20%, #ff0 40%, #0f0 40%, #0f0 60%, #00f 60%, #00f 80%, #f0f 80%, #f0f 100%);
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        input[type=range]:hover {
+            opacity: 1;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 15px;
+            height: 15px;
+            background: #ffffff;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 2px solid #000;
+        }
+
+        input[type=range]:disabled {
+            background: #ddd;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello!!!</h1>
-    <br>
-    <h3>Moisture of your plant is: </h3>
+<h1>Hello!!!</h1>
+
+<div>
+    <p>
+        Moisture of your plant is: <span id="moistureValue"></span>
+    </p>
+
+    <input type="range" min="0" max="100" id="moistureSlider" disabled>
+</div>
+
+<script>
+    let previousMoistureValue = null;
+
+    function updateMoisture() {
+        fetch('/plant')
+            .then(response => response.text())
+            .then(data => {
+                if (data !== previousMoistureValue) {
+                    previousMoistureValue = data;
+                    document.getElementById('moistureValue').innerText = data;
+                    document.getElementById('moistureSlider').value = data;
+
+                    if (data < 20) {
+                        document.getElementById('moistureSlider').style.background = 'linear-gradient(to right, #f00 0%, #f00 100%)';
+                    } else if (data >= 20 && data < 40) {
+                        document.getElementById('moistureSlider').style.background = 'linear-gradient(to right, #ff0 0%, #ff0 100%)';
+                    } else if (data >= 40 && data < 60) {
+                        document.getElementById('moistureSlider').style.background = 'linear-gradient(to right, #0f0 0%, #0f0 100%)';
+                    } else if (data >= 60 && data < 80) {
+                        document.getElementById('moistureSlider').style.background = 'linear-gradient(to right, #00f 0%, #00f 100%)';
+                    } else {
+                        document.getElementById('moistureSlider').style.background = 'linear-gradient(to right, #f0f 0%, #f0f 100%)';
+                    }
+                }
+            })
+            .catch(error => console.error('Error fetching moisture data:', error));
+    }
+
+    setInterval(updateMoisture, 2500);
+    updateMoisture();
+</script>
+
 </body>
 </html>
