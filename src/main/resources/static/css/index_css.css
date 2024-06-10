@@ -1,100 +1,146 @@
 body {
-    background-color: ForestGreen;
+    background-color: #228B22;
     height: 100vh;
     margin: 0;
-    display: grid;
-    place-content: center;
-    background: linear-gradient(-45deg, #269900, #228B22, #32CD32, #9fff80, #79ff4d);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(135deg, #1a5f24, #195425, #1b6d2a, #1a7a33, #16883b);
     background-size: 400% 400%;
-    animation: gradient 10s ease infinite;
-}
-@keyframes gradient {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-h1 {
-    font-size: 5em;
-}
-#Elements {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    animation: gradient 15s ease infinite;
     color: white;
-    max-width: 90%;
-    max-height: 90%;
+    font-family: Arial, sans-serif;
+    position: relative;
 }
+
+@keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+h1 {
+    font-size: 4em;
+    margin: 0.5em;
+    font-family: 'DM Serif Text', serif;
+    margin-top: -70px;
+    padding-top: 140px;
+}
+
+#Elements {
+    text-align: center;
+    max-width: 90%;
+    top: 20%;
+    margin-top: -50px; /* Move the elements slightly up */
+}
+
 #plantImage {
     border-radius: 50%;
-    overflow: hidden;
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
-.ps {
-    color: SkyBlue;
-    font-size: 3em;
-    font-weight: bold;
+
+h3 {
+    font-size: 2.5em;
+    font-family: 'DM Serif Text', serif;
+    margin-top: 100px;
+    margin-bottom: 10px;
 }
-.hs {
-    font-size: 4em;
-}
+
+
 .buttons {
-    --b: 3px;   /* border thickness */
-    --s: .15em; /* size of the corner */
-    --c: #fff;  /* color */
-    padding: calc(.05em + var(--s)) calc(.3em + var(--s));
-    color: var(--c);
-    --_p: var(--s);
-    background: conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--c) 0) var(--_p) var(--_p) / calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
-    transition: .3s linear, color 0s, background-color 0s;
-    outline: var(--b) solid #0000;
-    outline-offset: .2em;
-    font-weight: bold;
-    font-size: 2em;
-    cursor: pointer;
+    padding: 0.5em 1em;
+    color: white;
+    background: #1b6d2a;
+    font-family: 'DM Serif Text', serif;
     border: none;
-    margin: .1em;
+    border-radius: 5px;
+    font-size: 1.6em;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
-.buttons:hover,
-.buttons:focus-visible {
-    --_p: 0px;
-    outline-color: var(--c);
-    outline-offset: .05em;
+
+.buttons:hover {
+    background: #145a21;
 }
-.buttons:active {
-    background: var(--c);
-    color: #fff;
-}
+
 #SettingsButton {
     position: absolute;
-    top: 20px; /* Dostosuj wartość, aby ustawić odległość od górnej krawędzi */
-    right: 10px;
+    top: 20px;
+    right: 20px;
 }
-#AccountButton {
-    position: absolute; /* umieszcza przycisk na stałe, niezależnie od przewijania strony */
-    top: 20px; /* odległość od góry */
-    right: 10%; /* odległość od prawej krawędzi */
-    z-index: 999; /* z-index określa, na jakiej warstwie znajduje się element */
+
+.moisture-text {
+    font-size: 2em;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
-#MyPlantsButton {
-    position: absolute; /* umieszcza przycisk na stałe, niezależnie od przewijania strony */
-    top: 20px; /* odległość od góry */
-    right: 20%; /* odległość od prawej krawędzi */
-    z-index: 999; /* z-index określa, na jakiej warstwie znajduje się element */
+
+.moisture-high {
+    color: #06a8bb;
+    font-size: 2.5em;
+    font-family: 'DM Serif Text', serif;
+    font-weight: bold;
+    padding-top: 0px;
+    margin-top: 0px;
 }
-#Watering {
-    font-size: 3.5em;
+
+.moisture-medium {
+    color: #b7b723;
+    font-size: 2.5em;
+    font-family: 'DM Serif Text', serif;
+    font-weight: bold;
+    padding-top: 0px;
+    margin-top: 0px;
 }
-#loading {
-    display: none;
-    font-size: 1em;
-    color: #ff5722;
+
+.moisture-low {
+    color: #c56138;
+    font-size: 2.5em;
+    font-family: 'DM Serif Text', serif;
+    font-weight: bold;
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.moisture-text{
+    font-size: 2.7em;
+    font-family: 'DM Serif Text', serif;
+}
+.p{
+    font-size: 2.5em;
+    font-family: 'DM Serif Text', serif;
+}
+#text{
+    font-size: 2.5em;
+    font-family: 'DM Serif Text', serif;
+    width: 50px;
+    height: 50px;
+
+}
+
+#moistureValue #text {
+    font-size: 2.5em; /* Zwiększamy rozmiar czcionki */
+    font-family: 'DM Serif Text', serif;
+    transition: color 0.3s ease; /* Dodajemy efekt przejścia dla zmiany koloru */
+}
+
+.moisture-high #moistureValue #text {
+    color: #06a8bb; /* Kolor procentu dla wilgotności wysokiej */
+    font-size: 2.5em;
+    font-family: 'DM Serif Text', serif;
+}
+
+.moisture-medium #moistureValue #text {
+    color: #b7b723; /* Kolor procentu dla wilgotności średniej */
+    font-size: 2.5em;
+    font-family: 'DM Serif Text', serif;
+}
+
+.moisture-low #moistureValue #text {
+    color: #c56138; /* Kolor procentu dla wilgotności niskiej */
+    font-size: 2.5em;
+    font-family: 'DM Serif Text', serif;
 }

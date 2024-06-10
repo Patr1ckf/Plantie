@@ -2,6 +2,7 @@ package com.plantie.app.plantie.controller;
 
 import com.plantie.app.plantie.service.PlantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,7 +17,6 @@ public class PlantController {
 
     @PutMapping("/plant")
     public String updateMoisture(@RequestBody double moisture) {
-        plantService.validateMoistureValue(moisture);
         plantService.updateMoisture(moisture);
         return "Moisture data updated successfully";
     }
@@ -25,4 +25,5 @@ public class PlantController {
     public double getMoisture() {
         return plantService.getMoisture();
     }
+
 }

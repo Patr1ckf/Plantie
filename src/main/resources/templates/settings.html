@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" th:href="@{/css/settings_css.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<button id="AccountButton" class="buttons" onclick="window.location.href='/index'">Back</button>
+<h1>Plant Settings</h1>
+<div class="container">
+
+    <form id="settingsForm" action="/settings/update" method="post" th:object="${plant}">
+        <div class="input-group">
+            <label for="plantNameInput">Plant's name:</label>
+            <input type="text" id="plantNameInput" th:field="*{name}" placeholder="Enter plant name">
+            <span class="tooltip">
+                <span class="checkmark" id="nameCheck" onclick="validateInput('plantNameInput')" style="cursor: pointer;">
+                    <i style="font-size:24px" class="fa">&#xf0c7;</i>
+                </span>
+                <span class="tooltiptext" id="nameError">Name cannot be empty</span>
+            </span>
+        </div>
+
+        <div class="input-group">
+            <label for="moistureInput">Minimum moisture level (%):</label>
+            <input type="number" id="moistureInput" th:field="*{minMoisture}" placeholder="Enter minimum moisture level">
+            <span class="tooltip">
+                <span class="checkmark" id="moistureCheck" onclick="validateInput('moistureInput')" style="cursor: pointer;">
+                    <i style="font-size:24px" class="fa">&#xf0c7;</i>
+                </span>
+                <span class="tooltiptext" id="moistureError">Moisture level must be between 0 and 100</span>
+            </span>
+        </div>
+
+        <div class="input-group">
+            <label for="emailInput">Notification email:</label>
+            <input type="text" id="emailInput" th:field="*{email}" placeholder="Enter email for notifications">
+            <span class="tooltip">
+                <span class="checkmark" id="emailCheck" onclick="validateInput('emailInput')" style="cursor: pointer;">
+                    <i style="font-size:24px" class="fa">&#xf0c7;</i>
+                </span>
+                <span class="tooltiptext" id="emailError">Please enter a valid email address</span>
+            </span>
+        </div>
+        <!-- Usunięcie przycisku "Save" -->
+    </form>
+    <!-- Dodanie ikony dyskietki -->
+</div>
+
+<script>
+
+    function submitForm() {
+        document.getElementById("settingsForm").submit(); // Zatwierdzenie formularza
+    }
+
+    function validateInput(inputId) {
+        const input = document.getElementById(inputId);
+        const checkmark = input.nextElementSibling.querySelector('.checkmark');
+        const tooltip = input.nextElementSibling.querySelector('.tooltiptext');
+        const value = input.value.trim();
+        let isValid = true;
+
+        if (value === '') {
+            isValid = false;
+            tooltip.textContent = "Field cannot be empty";
+            tooltip.style.visibility = 'visible';
+        } else if (inputId === 'moistureInput') {
+            const moistureValue = parseFloat(value);
+            if (isNaN(moistureValue) || moistureValue < 0 || moistureValue > 100) {
+                isValid = false;
+                tooltip.textContent = "Moisture level must be between 0 and 100";
+                tooltip.style.visibility = 'visible';
+            }
+        } else if (inputId === 'emailInput') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                isValid = false;
+                tooltip.textContent = "Please enter a valid email address";
+                tooltip.style.visibility = 'visible';
+            }
+        }
+
+        if (isValid) {
+            checkmark.style.color = 'blue';
+            tooltip.style.visibility = 'hidden';
+            submitForm();
+        } else {
+            checkmark.style.color = 'red';
+        }
+    }
+</script>
+</body>
+</html>

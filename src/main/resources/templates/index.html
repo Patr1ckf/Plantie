@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -10,17 +10,37 @@
 </head>
 <body>
 
+<button id="SettingsButton" class="buttons" onclick="window.location.href='/settings'">Settings</button>
 
 <div id="Elements">
-    <h1 id="h1">My plant</h1>
-    <img id="plantImage" src="/photos/plant1.png">
+    <h1 id="h1" th:text="${name}">My plant</h1>
+    <img id="plantImage" src="/photos/friendship.gif">
     <br>
     <h3 id="h3" class="hs">Moisture percentage:</h3>
-    <p id="p2" class="ps"><span id="moistureValue"></span>%</p>
+    <p id="moistureValue" class="moisture-text"><span></span></p>
     <br>
     <br>
 </div>
 <script>
+    function updateMoistureTextClass(moisture) {
+        const moistureText = document.getElementById('moistureValue').querySelector('span');
+        const moistureContainer = moistureText.parentNode; // Get the parent <p> element
+        moistureText.innerText = moisture + "%";
+
+        // Remove all moisture classes before adding a new one
+        moistureContainer.classList.remove('moisture-low', 'moisture-medium', 'moisture-high');
+
+        if (moisture >= 70) {
+            moistureContainer.classList.add('moisture-high');
+        } else if (moisture >= 40) {
+            moistureContainer.classList.add('moisture-medium');
+        } else {
+            moistureContainer.classList.add('moisture-low');
+        }
+    }
+
+
+
     let previousMoistureValue = null;
 
     function updateMoisture() {
@@ -29,14 +49,13 @@
             .then(data => {
                 if (data !== previousMoistureValue) {
                     previousMoistureValue = data;
-                    document.getElementById('moistureValue').innerText = data;
-                    document.getElementById('moistureSlider').value = data;
+                    updateMoistureTextClass(data);
                 }
             })
             .catch(error => console.error('Error fetching moisture data:', error));
     }
 
-    setInterval(updateMoisture, 2500);
+    setInterval(updateMoisture, 1000);
     updateMoisture();
 </script>
 </body>

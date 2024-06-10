@@ -1,22 +1,21 @@
 package com.plantie.app.plantie.model;
 
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
-import java.util.Objects;
+import org.springframework.stereotype.Component;
 
-//@Entity
+@Component
 public class Plant {
-
-//    private @Id @GeneratedValue Long id;
-    private double moisture;
+    private double moisture = 70.0;
+    private String name = "My Plant";
+    private String email = "";
+    private double minMoisture = 0.0;
 
     public Plant() {
-
     }
 
-    public Plant(double moisture) {
+    public Plant(String name, double moisture, String email) {
+        this.name = name;
         this.moisture = moisture;
+        this.email = email;
     }
 
     public double getMoisture() {
@@ -27,31 +26,38 @@ public class Plant {
         this.moisture = moisture;
     }
 
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getMinMoisture() {
+        return minMoisture;
+    }
+
+    public void setMinMoisture(double minMoisture) {
+        this.minMoisture = minMoisture;
+    }
     @Override
     public String toString() {
         return "Plant{" +
                 "moisture=" + moisture +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", minMoisture=" + minMoisture +
                 '}';
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Plant plant = (Plant) o;
-//        return Double.compare(moisture, plant.moisture) == 0 && Objects.equals(id, plant.id);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, moisture);
-//    }
 }
