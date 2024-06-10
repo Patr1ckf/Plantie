@@ -19,8 +19,7 @@ public class PlantService {
 
     public void validateMoistureValue(double moisture) {
         if (moisture < 0 || moisture > 100) {
-            throw new IllegalArgumentException("Moisture value must be between 0 and 100");
-        }
+            throw new IllegalArgumentException("Moisture value must be between 0 and 100");}
     }
 
     public void updateMoisture(double moisture) {
