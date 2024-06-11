@@ -4,16 +4,15 @@ body {
     margin: 0;
     display: grid;
     place-content: center;
-    background: linear-gradient(135deg, #1a5f24, #195425, #1b6d2a, #1a7a33, #16883b);
+    background: linear-gradient(90deg, rgba(101,131,84,1) 0%, rgba(117,151,94,1) 17%, rgba(135,171,105,1) 41%, rgba(135,171,105,1) 57%, rgba(163,197,133,1) 76%, rgba(179,207,153,1) 91%);
     background-size: 400% 400%;
     animation: gradient 10s ease infinite;
     font-family: 'DM Serif Text', serif;
     color: white;
     text-align: center;
     padding-top: 50px;
-    overflow-y: hidden; /* Prevent vertical scrolling */
+    overflow-y: hidden;
 }
-
 
 @keyframes gradient {
     0% {
@@ -38,7 +37,7 @@ body {
     max-height: 90%;
     overflow-y: scroll;
     padding: 20px;
-    background-color: rgba(0, 100, 0, 0.7);
+    background-color: rgb(87, 107, 71);
     border-radius: 10px;
 }
 
@@ -47,11 +46,11 @@ body {
 }
 
 #Elements::-webkit-scrollbar-track {
-    background: ForestGreen;
+    background-color: rgb(87, 107, 71);
 }
 
 #Elements::-webkit-scrollbar-thumb {
-    background-color: ForestGreen;
+    background-color: rgb(87, 107, 71);
     border-radius: 10px;
 }
 
@@ -95,7 +94,8 @@ input[type="text"], input[type="email"], input[type="number"] {
 }
 
 .container {
-    background-color: rgba(20, 59, 26, 0.7);
+    background-color: rgb(93, 119, 77);
+    font-family: 'DM Serif Text', serif;
     border-radius: 10px;
     padding: 20px;
     width: 700%; /* Zmiana szerokości kontenera na 80% viewportu */
@@ -121,8 +121,6 @@ h1 {
     font-family: 'DM Serif Text', serif;
 }
 
-
-
 .check-icon {
     display: inline-block;
     color: white;
@@ -138,7 +136,7 @@ h1 {
 .buttons {
     padding: 0.5em 1em;
     color: white;
-    background: #1b6d2a;
+    background: rgba(117,151,94,1) 17%;
     font-family: 'DM Serif Text', serif;
     border: none;
     border-radius: 5px;
@@ -147,7 +145,7 @@ h1 {
     transition: background 0.3s ease;
 }
 .buttons:hover {
-    background: #145a21;
+    background-color: rgb(87, 107, 71);
 }
 #SettingsButton {
     position: absolute;
@@ -175,12 +173,23 @@ h1 {
 }
 
 .tooltip:hover .tooltiptext {
-    visibility: visible;
+    visibility: hidden;
 }
 
 .checkmark {
     font-size: 24px;
     margin-left: 10px;
+    transition: transform 0.3s ease;
 }
 
+.checkmark:hover {
+    transform: scale(1.2); /* Adjusted scale */
+}
 
+.checkmark i.fa {
+    transition: transform 0.3s ease; /* Added transition for the icon */
+}
+
+.checkmark:hover i.fa {
+    transform: scale(1.2); /* Adjusted scale */
+}

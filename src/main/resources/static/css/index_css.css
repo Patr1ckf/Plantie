@@ -6,7 +6,9 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background: linear-gradient(135deg, #1a5f24, #195425, #1b6d2a, #1a7a33, #16883b);
+    /*background: linear-gradient(135deg, #1a5f24, #195425, #1b6d2a, #1a7a33, #16883b);*/
+     background: linear-gradient(90deg, rgba(101,131,84,1) 0%, rgba(117,151,94,1) 17%, rgba(135,171,105,1) 41%, rgba(135,171,105,1) 57%, rgba(163,197,133,1) 76%, rgba(179,207,153,1) 91%);
+    /*background: linear-gradient(90deg, rgba(85,123,131,1) 0%, rgba(57,174,169,1) 22%, rgba(162,213,171,1) 66%, rgba(229,239,193,1) 91%);*/
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     color: white;
@@ -53,7 +55,7 @@ h3 {
 .buttons {
     padding: 0.5em 1em;
     color: white;
-    background: #1b6d2a;
+    background: rgba(117,151,94,1) 17%;
     font-family: 'DM Serif Text', serif;
     border: none;
     border-radius: 5px;
@@ -63,7 +65,7 @@ h3 {
 }
 
 .buttons:hover {
-    background: #145a21;
+    background: rgb(87, 107, 71) 17%;
 }
 
 #SettingsButton {
@@ -79,7 +81,7 @@ h3 {
 }
 
 .moisture-high {
-    color: #06a8bb;
+    color: #1a601a;
     font-size: 2.5em;
     font-family: 'DM Serif Text', serif;
     font-weight: bold;
@@ -88,7 +90,7 @@ h3 {
 }
 
 .moisture-medium {
-    color: #b7b723;
+    color: #8c7a07;
     font-size: 2.5em;
     font-family: 'DM Serif Text', serif;
     font-weight: bold;
@@ -97,7 +99,7 @@ h3 {
 }
 
 .moisture-low {
-    color: #c56138;
+    color: rgba(185, 91, 56, 0.88);
     font-size: 2.5em;
     font-family: 'DM Serif Text', serif;
     font-weight: bold;
@@ -128,7 +130,7 @@ h3 {
 }
 
 .moisture-high #moistureValue #text {
-    color: #06a8bb; /* Kolor procentu dla wilgotności wysokiej */
+    color: #1a601a; /* Kolor procentu dla wilgotności wysokiej */
     font-size: 2.5em;
     font-family: 'DM Serif Text', serif;
 }

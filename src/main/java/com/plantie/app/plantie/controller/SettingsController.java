@@ -31,10 +31,6 @@ public class SettingsController {
         plant.setMinMoisture(updatedPlant.getMinMoisture());
         plant.setEmail(updatedPlant.getEmail());
 
-        System.out.println("Name: " + plant.getName());
-        System.out.println("Moisture: " + plant.getMinMoisture());
-        System.out.println("Email: " + plant.getEmail());
-
         return "redirect:/settings";
     }
 

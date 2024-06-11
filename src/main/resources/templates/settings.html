@@ -16,7 +16,7 @@
     <form id="settingsForm" action="/settings/update" method="post" th:object="${plant}">
         <div class="input-group">
             <label for="plantNameInput">Plant's name:</label>
-            <input type="text" id="plantNameInput" th:field="*{name}" placeholder="Enter plant name">
+            <input type="text" id="plantNameInput" th:field="*{name}" th:value="*{name}" placeholder="Enter plant name">
             <span class="tooltip">
                 <span class="checkmark" id="nameCheck" onclick="validateInput('plantNameInput')" style="cursor: pointer;">
                     <i style="font-size:24px" class="fa">&#xf0c7;</i>
@@ -46,15 +46,12 @@
                 <span class="tooltiptext" id="emailError">Please enter a valid email address</span>
             </span>
         </div>
-        <!-- Usunięcie przycisku "Save" -->
     </form>
-    <!-- Dodanie ikony dyskietki -->
 </div>
 
 <script>
-
     function submitForm() {
-        document.getElementById("settingsForm").submit(); // Zatwierdzenie formularza
+        document.getElementById("settingsForm").submit();
     }
 
     function validateInput(inputId) {
@@ -62,20 +59,27 @@
         const checkmark = input.nextElementSibling.querySelector('.checkmark');
         const tooltip = input.nextElementSibling.querySelector('.tooltiptext');
         const value = input.value.trim();
+
+        console.log("input:", inputId);
+        console.log("value:", value);
+
         let isValid = true;
 
         if (value === '') {
             isValid = false;
             tooltip.textContent = "Field cannot be empty";
             tooltip.style.visibility = 'visible';
-        } else if (inputId === 'moistureInput') {
+        }
+        if (inputId === 'moistureInput') {
             const moistureValue = parseFloat(value);
             if (isNaN(moistureValue) || moistureValue < 0 || moistureValue > 100) {
                 isValid = false;
+                console.log(isValid)
                 tooltip.textContent = "Moisture level must be between 0 and 100";
                 tooltip.style.visibility = 'visible';
             }
-        } else if (inputId === 'emailInput') {
+        }
+        if (inputId === 'emailInput') {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(value)) {
                 isValid = false;
@@ -85,11 +89,11 @@
         }
 
         if (isValid) {
-            checkmark.style.color = 'blue';
+            checkmark.style.color = '#4da44d';
             tooltip.style.visibility = 'hidden';
             submitForm();
         } else {
-            checkmark.style.color = 'red';
+            checkmark.style.color = 'rgba(196,37,37,0.96)';
         }
     }
 </script>

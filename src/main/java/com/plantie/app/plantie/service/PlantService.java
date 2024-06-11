@@ -37,8 +37,8 @@ public class PlantService {
             if(!sent){
                 emailService.sendEmail(
                         plant.getEmail(),
-                        "Moisture Alert",
-                        "The soil moisture level has dropped below " + plant.getMinMoisture() + "%. Current level: " + plant.getMoisture() + "%"
+                        "Water me :((\n",
+                        "Hey there, it's your " + plant.getName() + " speaking!\nMy soil moisture is only at " + plant.getMoisture() + " %, mind giving me a drink? \uD83C\uDF3F"
                 );
                 sent = true;
             }
