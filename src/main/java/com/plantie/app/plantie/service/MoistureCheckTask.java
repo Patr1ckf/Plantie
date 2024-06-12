@@ -17,7 +17,7 @@ public class MoistureCheckTask {
         this.plant =plant;
     }
 
-    @Scheduled(fixedRate = 5000) // Check every 5 seconds
+    @Scheduled(fixedRate = 5000)
     public void checkMoisture() {
         if(!plant.getEmail().isEmpty()){
             plantService.checkMoistureAndAlert();
