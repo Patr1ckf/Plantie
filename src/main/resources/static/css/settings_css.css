@@ -116,7 +116,7 @@ h1 {
     flex: 1;
     text-align: left;
     font-size: 1.2em;
-    color: #fff; /* White text color */
+    color: #fff;
     margin-right: 20px; /* Add more space between label and input */
     font-family: 'DM Serif Text', serif;
 }
