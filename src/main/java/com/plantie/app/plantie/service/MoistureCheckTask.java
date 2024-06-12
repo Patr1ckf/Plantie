@@ -1,5 +1,6 @@
 package com.plantie.app.plantie.service;
 
+import com.plantie.app.plantie.model.Plant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -8,14 +9,19 @@ import org.springframework.stereotype.Component;
 public class MoistureCheckTask {
 
     private final PlantService plantService;
+    private final Plant plant;
 
     @Autowired
-    public MoistureCheckTask(PlantService plantService) {
+    public MoistureCheckTask(PlantService plantService, Plant plant) {
         this.plantService = plantService;
+        this.plant =plant;
     }
 
     @Scheduled(fixedRate = 5000) // Check every 5 seconds
     public void checkMoisture() {
-        plantService.checkMoistureAndAlert();
+        if(!plant.getEmail().isEmpty()){
+            plantService.checkMoistureAndAlert();
+        }
+
     }
 }

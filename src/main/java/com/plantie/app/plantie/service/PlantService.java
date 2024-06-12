@@ -25,7 +25,9 @@ public class PlantService {
     public void updateMoisture(double moisture) {
         validateMoistureValue(moisture);
         plant.setMoisture(moisture);
-        checkMoistureAndAlert();
+        if(!plant.getEmail().isEmpty()){
+            checkMoistureAndAlert();
+        }
     }
 
     public double getMoisture() {
@@ -37,7 +39,7 @@ public class PlantService {
             if(!sent){
                 emailService.sendEmail(
                         plant.getEmail(),
-                        "Water me :((\n",
+                        "Water me :((",
                         "Hey there, it's your " + plant.getName() + " speaking!\nMy soil moisture is only at " + plant.getMoisture() + " %, mind giving me a drink? \uD83C\uDF3F"
                 );
                 sent = true;
