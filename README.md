@@ -18,7 +18,7 @@ Plantie is a web application built with Spring Boot that monitors soil moisture 
 - **Clone the repository:**
 ```bash
 git clone https://github.com/user/plantie-app.git
-cd plantie-app`
+cd plantie-app
 ```
 - **Install dependencies:**
 ```bash
